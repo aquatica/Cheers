@@ -16,7 +16,7 @@ open class CheerView: UIView {
     stop()
 
     let emitter = CAEmitterLayer()
-    emitter.emitterPosition = CGPoint(x: bounds.width / 2.0, y: 0)
+    emitter.emitterPosition = CGPoint(x: bounds.width / 2.0, y: bounds.height)
     emitter.emitterShape = kCAEmitterLayerLine
     emitter.emitterSize = CGSize(width: bounds.width, height: 1)
     emitter.renderMode = kCAEmitterLayerAdditive
@@ -26,9 +26,9 @@ open class CheerView: UIView {
       cell.birthRate = 5
       cell.lifetime = 20.0
       cell.lifetimeRange = 10
-      cell.velocity = 250
+      cell.velocity = 400
       cell.velocityRange = 50
-      cell.emissionLongitude = CGFloat.pi
+//      cell.emissionLongitude = CGFloat.pi
       cell.emissionRange = CGFloat.pi * 0.2
       cell.spinRange = 5
       cell.scale = 0.3
