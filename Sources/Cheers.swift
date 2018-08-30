@@ -21,17 +21,9 @@ open class CheerView: UIView {
     emitter.emitterSize = CGSize(width: bounds.width, height: 1)
     emitter.renderMode = kCAEmitterLayerAdditive
 
-    // This combination will ensure that all color/image combinations are evenly distributed.
-    // For example, if you have only one color, then we still want to make sure
-    // that all "allowed" particle types are represented in the result.
-    let combinations = Array<(UIColor, UIImage)>.createAllCombinations(
-      from: config.colors,
-      and: pickImages()
-    )
-
-    let cells: [CAEmitterCell] = combinations.reduce([]) { (accum, combination) in
+    let cells: [CAEmitterCell] = pickImages().reduce([]) { (accum, image) in
       let cell = CAEmitterCell()
-      cell.birthRate = 20
+      cell.birthRate = 5
       cell.lifetime = 20.0
       cell.lifetimeRange = 10
       cell.velocity = 250
@@ -41,14 +33,14 @@ open class CheerView: UIView {
       cell.spinRange = 5
       cell.scale = 0.3
       cell.scaleRange = 0.2
-      cell.color = combination.0.cgColor
+//      cell.color = combination.0.cgColor
       cell.alphaSpeed = -0.1
-      cell.contents = combination.1.cgImage
+      cell.contents = image.cgImage
       cell.xAcceleration = 20
       cell.yAcceleration = 50
-      cell.redRange = config.colorRange
-      cell.greenRange = config.colorRange
-      cell.blueRange = config.colorRange
+//      cell.redRange = config.colorRange
+//      cell.greenRange = config.colorRange
+//      cell.blueRange = config.colorRange
 
       return accum + [cell]
     }

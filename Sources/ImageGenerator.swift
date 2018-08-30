@@ -1,7 +1,7 @@
 import UIKit
 
 class ImageGenerator {
-  private let size = CGSize(width: 20, height: 20)
+  private let size = CGSize(width: 80, height: 80)
   
   private func generate(block: (CGContext?) -> Void) -> UIImage? {
     UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
